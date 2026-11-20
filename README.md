@@ -87,7 +87,7 @@ The model explains about **81% of the variance** in test charges. Test R² (0.80
 
 ## Prediction App
 
-Try it live: open `app.html` in a browser (or the deployed GitHub Pages link) and enter age, gender, BMI, children, smoking status, and region to get the estimated yearly insurance cost.
+Try it live: https://rehanfarooq1911.github.io/medical-insurance-cost-prediction/app.html — open it in a browser (or `app.html` in this repo) and enter age, gender, BMI, children, smoking status, and region to get the estimated yearly insurance cost.
 
 Example predictions from the trained model:
 
