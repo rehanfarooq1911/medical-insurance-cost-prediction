@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Medical Insurance Cost Predictor</title>
+<style>body{font-family:Arial,sans-serif;max-width:520px;margin:40px auto;padding:20px}
+label{display:block;margin:10px 0 4px}input,select{width:100%;padding:8px}
+button{margin-top:16px;padding:10px 20px;background:#0078d7;color:#fff;border:0;cursor:pointer}
+#result{margin-top:20px;font-size:20px;font-weight:bold}</style></head>
+<body>
+<h2>Medical Insurance Cost Predictor</h2>
+<p>Trained Multiple Linear Regression model (Day 20) - enter details to predict yearly insurance charges.</p>
+<label>Age</label><input id="age" type="number" value="35">
+<label>Gender</label><select id="sex"><option value="0">Female</option><option value="1" selected>Male</option></select>
+<label>BMI</label><input id="bmi" type="number" step="0.1" value="28">
+<label>Children</label><input id="children" type="number" value="2">
+<label>Smoker</label><select id="smoker"><option value="0" selected>No</option><option value="1">Yes</option></select>
+<label>Region</label><select id="region"><option value="0">Northeast</option><option value="1">Northwest</option><option value="2" selected>Southeast</option><option value="3">Southwest</option></select>
+<button onclick="predict()">Predict Insurance Cost</button>
+<div id="result"></div>
+<script>
+const theta=[-9251.20197709,248.22007025,-101.91470016,318.6730785,532.85657593,23077.55053583,-1839.76547773,-2232.33931234,-2679.38496726,-2499.71221977];
+function predict(){
+  const age=+document.getElementById('age').value, sex=+document.getElementById('sex').value,
+  bmi=+document.getElementById('bmi').value, ch=+document.getElementById('children').value,
+  sm=+document.getElementById('smoker').value, reg=+document.getElementById('region').value;
+  const r=[0,0,0,0]; r[reg]=1;
+  const x=[1,age,sex,bmi,ch,sm,...r];
+  const p=x.reduce((s,v,i)=>s+v*theta[i],0);
+  document.getElementById('result').textContent='Predicted insurance cost: $'+p.toFixed(2);
+}
+</script></body></html>
